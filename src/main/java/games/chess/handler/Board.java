@@ -15,6 +15,10 @@ public class Board {
     public Map<String, AbstractPiece> pieceMap = new HashMap<>();
     public Map<String, AbstractPiece> getPieceMap() {return pieceMap;}
 
+    public final Map<String,AbstractPiece> initPiece = new HashMap<>();
+
+
+
     public Map<Integer, AbstractPiece> boardMap = new HashMap<>();
     public Map<Integer, AbstractPiece> getBoardMap() {return boardMap;}
 
@@ -129,9 +133,8 @@ public class Board {
         pieceMap.put(BLACK_KNIGHT_2,new Knight(KNIGHT,BLACK_KNIGHT_2, 87,ChessPieceColor.BLACK));
         pieceMap.put(BLACK_ROCK_2,new Rock(ROCK,BLACK_ROCK_2, 88,ChessPieceColor.BLACK));
 
-
-
     }
+
 
     private void initBoardMap(){
         boardMap.put(21,new Pawn(PAWN,WHITE_PAWN_1,21,ChessPieceColor.WHITE));
@@ -187,6 +190,17 @@ public class Board {
         }
         if(turnColor.equals(ChessPieceColor.WHITE)) printWhiteTurn();
         else if (turnColor.equals(ChessPieceColor.BLACK)) printBlackTurn();
+    }
+
+    public AbstractPiece setPieceMap(String name,String nameUnit,Integer coor, ChessPieceColor color){
+        pieceMap.put(PAWN, new Pawn(name,nameUnit,coor,color));
+        pieceMap.put(ROCK, new Rock(name,nameUnit,coor,color));
+        pieceMap.put(KNIGHT, new Knight(name,nameUnit,coor,color));
+        pieceMap.put(BISHOP, new Bishop(name,nameUnit,coor,color));
+        pieceMap.put(KING, new King(name,nameUnit,coor,color));
+        pieceMap.put(QUEEN, new Queen(name,nameUnit,coor,color));
+
+        return pieceMap.get(name);
     }
 
     public void printWhiteTurn(){

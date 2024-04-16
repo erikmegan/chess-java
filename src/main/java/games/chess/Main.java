@@ -13,9 +13,10 @@ public class Main {
     public static void main(String[] args) {
 
         Board chessBoard = new Board();
-        CommandHandler commandHandler = new CommandHandler(chessBoard);
         chessBoard.init();
+        CommandHandler commandHandler = new CommandHandler(chessBoard);
         chessBoard.printBoard();
+
 
         try {
             Client client = new Client(new BufferedReader(new InputStreamReader(System.in)),commandHandler);

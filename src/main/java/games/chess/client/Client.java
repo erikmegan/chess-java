@@ -86,11 +86,8 @@ public class Client {
                 }
                 if(!StringUtils.isInteger(inputLine)) throw new NumberFormatException();
 
-//                cont = !commandHandler.move(chessPiece,Integer.parseInt(inputLine));
-//                if(commandHandler.move(chessPiece,Integer.parseInt(inputLine))){
                 cont = false;
                 to = Integer.parseInt(inputLine);
-//                }
             }catch ( NumberFormatException e){
                 System.out.println("Error : " + e.getMessage());
             }

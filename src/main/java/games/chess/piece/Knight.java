@@ -25,14 +25,14 @@ public class Knight extends AbstractPiece{
     private void searchTopRight(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 20 - 1;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 20 + 1 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);
@@ -42,14 +42,14 @@ public class Knight extends AbstractPiece{
     private void searchTopLeft(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 20 + 1;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 20 - 1 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);
@@ -59,14 +59,14 @@ public class Knight extends AbstractPiece{
     private void searchRightTop(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 2 + 10;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 2 - 10 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);
@@ -76,14 +76,14 @@ public class Knight extends AbstractPiece{
     private void searchRightBottom(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 2 - 10;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 2 + 10 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);
@@ -93,14 +93,14 @@ public class Knight extends AbstractPiece{
     private void searchLeftTop(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 2 + 10;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 2 - 10 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);
@@ -110,14 +110,14 @@ public class Knight extends AbstractPiece{
     private void searchLeftBottom(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 2 - 10;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 2 + 10 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);
@@ -127,14 +127,14 @@ public class Knight extends AbstractPiece{
     private void searchBottomRight(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 20 - 1;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 20 + 1 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);
@@ -144,14 +144,14 @@ public class Knight extends AbstractPiece{
     private void searchBottomLeft(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 20 + 1;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
             ){
                 possibleMoveSet.add(idx);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 20 - 1 ;
-            if(boardMap.get(idx) != null
+            if(boardMap.get(idx) == null
                     || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
             ){
                 possibleMoveSet.add(idx);

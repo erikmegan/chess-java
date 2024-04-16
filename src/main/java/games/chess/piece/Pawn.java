@@ -1,10 +1,6 @@
 package games.chess.piece;
 
 import games.chess.constant.ChessPieceColor;
-import games.chess.exception.InvalidMoveException;
-import games.chess.handler.Board;
-
-import java.util.*;
 
 
 public class Pawn extends AbstractPiece{

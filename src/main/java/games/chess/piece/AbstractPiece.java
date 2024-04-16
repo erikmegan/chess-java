@@ -3,17 +3,22 @@ package games.chess.piece;
 import games.chess.constant.ChessPieceColor;
 import games.chess.exception.InvalidMoveException;
 import games.chess.handler.Board;
-
 import java.util.*;
+
 
 public class AbstractPiece implements Piece{
 
     public Map<Integer, AbstractPiece> boardMap = new HashMap<>();
     public Set<Integer> possibleMoveSet = new HashSet<>();
+
     public String nameUnit;
     public String getNameUnit() {return nameUnit;}
 
     String name;
+
+    public String getName() {
+        return name;
+    }
 
     Integer current;
 
@@ -35,7 +40,8 @@ public class AbstractPiece implements Piece{
             }
 
             boardMap.remove(this.current);
-            boardMap.put(to,new Pawn(this.name,this.nameUnit,this.current,this.color));
+            boardMap.put(to, chessBoard.setPieceMap(this.name, this.nameUnit, to, this.color));
+            this.current = to;
         }else{
             throw new InvalidMoveException("invalid move");
         }
@@ -58,6 +64,8 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
+
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -72,6 +80,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
@@ -89,6 +98,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -103,6 +113,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
@@ -120,6 +131,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -134,6 +146,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
@@ -151,6 +164,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -165,6 +179,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
@@ -183,6 +198,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -197,6 +213,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
@@ -214,6 +231,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -228,6 +246,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
@@ -245,6 +264,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -259,6 +279,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
@@ -276,6 +297,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             boolean cont = true;
@@ -290,6 +312,7 @@ public class AbstractPiece implements Piece{
                 }else{
                     cont = false;
                 }
+                if(idx < 10 || idx > 88) cont = false;
             }
         }
     }
