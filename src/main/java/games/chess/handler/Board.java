@@ -1,9 +1,7 @@
 package games.chess.handler;
 
 import games.chess.constant.ChessPieceColor;
-import games.chess.piece.AbstractPiece;
-import games.chess.piece.Bishop;
-import games.chess.piece.Pawn;
+import games.chess.piece.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -113,23 +111,23 @@ public class Board {
         pieceMap.put(BLACK_PAWN_7,new Pawn(PAWN,BLACK_PAWN_7, 77,ChessPieceColor.BLACK));
         pieceMap.put(BLACK_PAWN_8,new Pawn(PAWN,BLACK_PAWN_8, 78,ChessPieceColor.BLACK));
 
-        pieceMap.put(WHITE_ROCK_1,new Bishop(ROCK,WHITE_ROCK_1, 11,ChessPieceColor.WHITE));
-        pieceMap.put(WHITE_KNIGHT_1,new Bishop(KNIGHT,WHITE_KNIGHT_1, 12,ChessPieceColor.WHITE));
+        pieceMap.put(WHITE_ROCK_1,new Rock(ROCK,WHITE_ROCK_1, 11,ChessPieceColor.WHITE));
+        pieceMap.put(WHITE_KNIGHT_1,new Knight(KNIGHT,WHITE_KNIGHT_1, 12,ChessPieceColor.WHITE));
         pieceMap.put(WHITE_BISHOP_1,new Bishop(BISHOP,WHITE_BISHOP_1, 13,ChessPieceColor.WHITE));
-        pieceMap.put(WHITE_KING,new Bishop(KING,WHITE_KING, 14,ChessPieceColor.WHITE));
-        pieceMap.put(WHITE_QUEEN,new Bishop(QUEEN,WHITE_QUEEN, 15,ChessPieceColor.WHITE));
+        pieceMap.put(WHITE_KING,new King(KING,WHITE_KING, 14,ChessPieceColor.WHITE));
+        pieceMap.put(WHITE_QUEEN,new Queen(QUEEN,WHITE_QUEEN, 15,ChessPieceColor.WHITE));
         pieceMap.put(WHITE_BISHOP_2,new Bishop(BISHOP,WHITE_BISHOP_2, 16,ChessPieceColor.WHITE));
-        pieceMap.put(WHITE_KNIGHT_2,new Bishop(KNIGHT,WHITE_KNIGHT_2, 17,ChessPieceColor.WHITE));
-        pieceMap.put(WHITE_ROCK_2,new Bishop(ROCK,WHITE_ROCK_2, 18,ChessPieceColor.WHITE));
+        pieceMap.put(WHITE_KNIGHT_2,new Knight(KNIGHT,WHITE_KNIGHT_2, 17,ChessPieceColor.WHITE));
+        pieceMap.put(WHITE_ROCK_2,new Rock(ROCK,WHITE_ROCK_2, 18,ChessPieceColor.WHITE));
 
-        pieceMap.put(BLACK_ROCK_1,new Bishop(ROCK,BLACK_ROCK_1, 81,ChessPieceColor.BLACK));
-        pieceMap.put(BLACK_KNIGHT_1,new Bishop(KNIGHT,BLACK_KNIGHT_1, 82,ChessPieceColor.BLACK));
+        pieceMap.put(BLACK_ROCK_1,new Rock(ROCK,BLACK_ROCK_1, 81,ChessPieceColor.BLACK));
+        pieceMap.put(BLACK_KNIGHT_1,new Knight(KNIGHT,BLACK_KNIGHT_1, 82,ChessPieceColor.BLACK));
         pieceMap.put(BLACK_BISHOP_1,new Bishop(BISHOP,BLACK_BISHOP_1, 83,ChessPieceColor.BLACK));
-        pieceMap.put(BLACK_QUEEN,new Bishop(QUEEN,BLACK_QUEEN, 84,ChessPieceColor.BLACK));
-        pieceMap.put(BLACK_KING,new Bishop(KING,BLACK_KING, 85,ChessPieceColor.BLACK));
+        pieceMap.put(BLACK_QUEEN,new Queen(QUEEN,BLACK_QUEEN, 84,ChessPieceColor.BLACK));
+        pieceMap.put(BLACK_KING,new King(KING,BLACK_KING, 85,ChessPieceColor.BLACK));
         pieceMap.put(BLACK_BISHOP_2,new Bishop(BISHOP,BLACK_BISHOP_2, 86,ChessPieceColor.BLACK));
-        pieceMap.put(BLACK_KNIGHT_2,new Bishop(KNIGHT,BLACK_KNIGHT_2, 87,ChessPieceColor.BLACK));
-        pieceMap.put(BLACK_ROCK_2,new Bishop(ROCK,BLACK_ROCK_2, 88,ChessPieceColor.BLACK));
+        pieceMap.put(BLACK_KNIGHT_2,new Knight(KNIGHT,BLACK_KNIGHT_2, 87,ChessPieceColor.BLACK));
+        pieceMap.put(BLACK_ROCK_2,new Rock(ROCK,BLACK_ROCK_2, 88,ChessPieceColor.BLACK));
 
 
 
@@ -154,23 +152,23 @@ public class Board {
         boardMap.put(77,new Pawn(PAWN,BLACK_PAWN_7, 77,ChessPieceColor.BLACK));
         boardMap.put(78,new Pawn(PAWN,BLACK_PAWN_8, 78,ChessPieceColor.BLACK));
 
-        boardMap.put(11,new Bishop(ROCK,WHITE_ROCK_1, 11,ChessPieceColor.WHITE));
-        boardMap.put(12,new Bishop(KNIGHT,WHITE_KNIGHT_1, 12,ChessPieceColor.WHITE));
+        boardMap.put(11,new Rock(ROCK,WHITE_ROCK_1, 11,ChessPieceColor.WHITE));
+        boardMap.put(12,new Knight(KNIGHT,WHITE_KNIGHT_1, 12,ChessPieceColor.WHITE));
         boardMap.put(13,new Bishop(BISHOP,WHITE_BISHOP_1, 13,ChessPieceColor.WHITE));
-        boardMap.put(14,new Bishop(KING,WHITE_KING, 14,ChessPieceColor.WHITE));
-        boardMap.put(15,new Bishop(QUEEN,WHITE_QUEEN, 15,ChessPieceColor.WHITE));
+        boardMap.put(14,new King(KING,WHITE_KING, 14,ChessPieceColor.WHITE));
+        boardMap.put(15,new Queen(QUEEN,WHITE_QUEEN, 15,ChessPieceColor.WHITE));
         boardMap.put(16,new Bishop(BISHOP,WHITE_BISHOP_2, 16,ChessPieceColor.WHITE));
-        boardMap.put(17,new Bishop(KNIGHT,WHITE_KNIGHT_2, 17,ChessPieceColor.WHITE));
-        boardMap.put(18,new Bishop(ROCK,WHITE_ROCK_2, 18,ChessPieceColor.WHITE));
+        boardMap.put(17,new Knight(KNIGHT,WHITE_KNIGHT_2, 17,ChessPieceColor.WHITE));
+        boardMap.put(18,new Rock(ROCK,WHITE_ROCK_2, 18,ChessPieceColor.WHITE));
 
-        boardMap.put(81,new Bishop(ROCK,BLACK_ROCK_1, 81,ChessPieceColor.BLACK));
-        boardMap.put(82,new Bishop(KNIGHT,BLACK_KNIGHT_1, 82,ChessPieceColor.BLACK));
+        boardMap.put(81,new Rock(ROCK,BLACK_ROCK_1, 81,ChessPieceColor.BLACK));
+        boardMap.put(82,new Knight(KNIGHT,BLACK_KNIGHT_1, 82,ChessPieceColor.BLACK));
         boardMap.put(83,new Bishop(BISHOP,BLACK_BISHOP_1, 83,ChessPieceColor.BLACK));
-        boardMap.put(84,new Bishop(QUEEN,BLACK_QUEEN, 84,ChessPieceColor.BLACK));
-        boardMap.put(85,new Bishop(KING,BLACK_KING, 85,ChessPieceColor.BLACK));
+        boardMap.put(84,new Queen(QUEEN,BLACK_QUEEN, 84,ChessPieceColor.BLACK));
+        boardMap.put(85,new King(KING,BLACK_KING, 85,ChessPieceColor.BLACK));
         boardMap.put(86,new Bishop(BISHOP,BLACK_BISHOP_2, 86,ChessPieceColor.BLACK));
-        boardMap.put(87,new Bishop(KNIGHT,BLACK_KNIGHT_2, 87,ChessPieceColor.BLACK));
-        boardMap.put(88,new Bishop(ROCK,BLACK_ROCK_2, 88,ChessPieceColor.BLACK));
+        boardMap.put(87,new Knight(KNIGHT,BLACK_KNIGHT_2, 87,ChessPieceColor.BLACK));
+        boardMap.put(88,new Rock(ROCK,BLACK_ROCK_2, 88,ChessPieceColor.BLACK));
 
     }
 
