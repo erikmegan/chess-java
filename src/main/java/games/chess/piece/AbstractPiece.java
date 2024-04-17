@@ -6,7 +6,7 @@ import games.chess.handler.Board;
 import java.util.*;
 
 
-public class AbstractPiece implements Piece{
+public abstract class AbstractPiece implements Piece{
 
     public Map<Integer, AbstractPiece> boardMap = new HashMap<>();
     public Set<Integer> possibleMoveSet = new HashSet<>();
@@ -24,6 +24,8 @@ public class AbstractPiece implements Piece{
 
     ChessPieceColor color;
     public ChessPieceColor getColor() {return color;}
+
+
 
     public boolean move(Board chessBoard, Integer to)throws InvalidMoveException {
         this.boardMap = chessBoard.getBoardMap();

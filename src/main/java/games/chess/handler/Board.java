@@ -11,12 +11,8 @@ import java.util.Set;
 import static games.chess.constant.ChessPiece.*;
 
 public class Board {
-
     public Map<String, AbstractPiece> pieceMap = new HashMap<>();
     public Map<String, AbstractPiece> getPieceMap() {return pieceMap;}
-
-    public final Map<String,AbstractPiece> initPiece = new HashMap<>();
-
 
 
     public Map<Integer, AbstractPiece> boardMap = new HashMap<>();
