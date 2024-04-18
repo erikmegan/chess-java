@@ -188,14 +188,22 @@ public class Board {
         else if (turnColor.equals(ChessPieceColor.BLACK)) printBlackTurn();
     }
 
-    public AbstractPiece setPieceMap(String name,String nameUnit,Integer coor, ChessPieceColor color){
-        pieceMap.put(PAWN, new Pawn(name,nameUnit,coor,color));
-        pieceMap.put(ROCK, new Rock(name,nameUnit,coor,color));
-        pieceMap.put(KNIGHT, new Knight(name,nameUnit,coor,color));
-        pieceMap.put(BISHOP, new Bishop(name,nameUnit,coor,color));
-        pieceMap.put(KING, new King(name,nameUnit,coor,color));
-        pieceMap.put(QUEEN, new Queen(name,nameUnit,coor,color));
+    public AbstractPiece getAbstractPiece(String name,String nameUnit,Integer coor, ChessPieceColor color){
 
+        switch (name){
+            case PAWN :
+                pieceMap.put(PAWN, new Pawn(name,nameUnit,coor,color));
+            case ROCK:
+                pieceMap.put(ROCK, new Rock(name,nameUnit,coor,color));
+            case KNIGHT:
+                pieceMap.put(KNIGHT, new Knight(name,nameUnit,coor,color));
+            case BISHOP:
+                pieceMap.put(BISHOP, new Bishop(name,nameUnit,coor,color));
+            case KING:
+                pieceMap.put(KING, new King(name,nameUnit,coor,color));
+            case QUEEN:
+                pieceMap.put(QUEEN, new Queen(name,nameUnit,coor,color));
+        }
         return pieceMap.get(name);
     }
 

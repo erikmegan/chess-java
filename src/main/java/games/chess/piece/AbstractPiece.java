@@ -4,6 +4,7 @@ import games.chess.constant.ChessPieceColor;
 import games.chess.exception.InvalidMoveException;
 import games.chess.handler.Board;
 import java.util.*;
+import java.util.function.Function;
 
 
 public abstract class AbstractPiece implements Piece{
@@ -42,7 +43,7 @@ public abstract class AbstractPiece implements Piece{
             }
 
             boardMap.remove(this.current);
-            boardMap.put(to, chessBoard.setPieceMap(this.name, this.nameUnit, to, this.color));
+            boardMap.put(to, chessBoard.getAbstractPiece(this.name, this.nameUnit, to, this.color));
             this.current = to;
         }else{
             throw new InvalidMoveException("invalid move");

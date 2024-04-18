@@ -18,7 +18,7 @@ public class CommandHandler {
 
     }
 
-    public boolean validateTurnColor(String chessPiece) throws InvalidTurnException{
+    public void validateTurnColor(String chessPiece) throws InvalidTurnException{
         if (chessBoard.getTurnColor() == ChessPieceColor.WHITE){
             if(!chessBoard.getWhitePieces().contains(chessPiece.toUpperCase())){
                 throw new InvalidTurnException(chessBoard.getTurnColor().toString());
@@ -28,7 +28,7 @@ public class CommandHandler {
                 throw new InvalidTurnException(chessBoard.getTurnColor().toString());
             }
         }
-        return true;
+//        return true;
     }
     public void move(String chessPiece, Integer to)throws InvalidMoveException {
         // to do

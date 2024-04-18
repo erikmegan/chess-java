@@ -9,6 +9,7 @@ import games.chess.utils.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Client {
 
@@ -27,7 +28,57 @@ public class Client {
         this.commandHandler = commandHandler;
     }
 
-    public void handleInput() throws IOException,CloseReaderException{
+    // for single input line
+    public void handleInput()throws IOException,CloseReaderException{
+        try {
+            while (true) {
+                System.out.print("input chess piece and coordinate :");
+                String inputLine = this.inputReader.readLine();
+                if (inputLine == null) break;
+
+                inputLine = inputLine.trim();
+                if (inputLine.isEmpty()) continue;
+
+                if (inputLine.equalsIgnoreCase("exit")) {
+                    throw new CloseReaderException("exit");
+                }
+
+                if (gameDone) {
+                    break;
+                }
+
+                processInputLine(inputLine);
+            }
+        }
+        finally {
+            inputReader.close();
+        }
+
+    }
+    private void processInputLine(String inputLine){
+        String[] inputChunks = inputLine.split(" ");
+
+        String piece = inputChunks[0];
+        String[] params = Arrays.copyOfRange(inputChunks,1,inputChunks.length);
+
+        try {
+            commandHandler.validateTurnColor(piece);
+            if(!StringUtils.isInteger(params[0])){
+                // todo create command to give info available move
+                throw new NumberFormatException("coordinate must be integer");
+            }else{
+                this.to = Integer.parseInt(params[0]);
+                commandHandler.move(piece,to);
+                commandHandler.alternateTurn();
+            }
+        }catch (InvalidMoveException | InvalidTurnException | NumberFormatException e){
+            System.out.println("Error : " + e.getMessage());
+        }
+    }
+
+
+    // for 2 input line
+    public void handleInput2line() throws IOException,CloseReaderException{
         boolean cont = true;
         while (cont){
             try {
@@ -45,8 +96,6 @@ public class Client {
             }
         }
         inputReader.close();
-
-
     }
     public void handleInputChessPiece() throws IOException,CloseReaderException,GameDoneException {
         boolean cont = true;
@@ -63,10 +112,9 @@ public class Client {
                     throw new CloseReaderException("exit");
                 }
 
-                if (commandHandler.validateTurnColor(inputLine)) {
-                    cont = false;
-                    chessPiece = inputLine;
-                }
+                commandHandler.validateTurnColor(inputLine);
+                this.chessPiece = inputLine;
+
             } catch (InvalidTurnException e) {
                 System.out.println("Error : " + e.getMessage());
             }
@@ -87,12 +135,11 @@ public class Client {
                 if(!StringUtils.isInteger(inputLine)) throw new NumberFormatException();
 
                 cont = false;
-                to = Integer.parseInt(inputLine);
+                this.to = Integer.parseInt(inputLine);
             }catch ( NumberFormatException e){
                 System.out.println("Error : " + e.getMessage());
             }
         }
-
     }
 
 }
