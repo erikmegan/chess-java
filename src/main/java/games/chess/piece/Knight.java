@@ -22,140 +22,84 @@ public class Knight extends AbstractPiece{
         searchLeftBottom();
     }
 
+    private void route(Integer idx, ChessPieceColor colorOpponent){
+        if(boardMap.get(idx) == null
+                || boardMap.get(idx).getColor().equals(colorOpponent)
+        ){
+            possibleMoveSet.add(idx);
+        }
+    }
+
     private void searchTopRight(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 20 - 1;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 20 + 1 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
     private void searchTopLeft(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 20 + 1;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 20 - 1 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
     private void searchRightTop(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 2 + 10;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 2 - 10 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
     private void searchRightBottom(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 2 - 10;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 2 + 10 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
     private void searchLeftTop(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 2 + 10;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 2 - 10 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
     private void searchLeftBottom(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current + 2 - 10;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current - 2 + 10 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
     private void searchBottomRight(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 20 - 1;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 20 + 1 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
     private void searchBottomLeft(){
         if(this.color.equals(ChessPieceColor.WHITE)){
             Integer idx = this.current - 20 + 1;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.BLACK);
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer idx = this.current + 20 - 1 ;
-            if(boardMap.get(idx) == null
-                    || boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)
-            ){
-                possibleMoveSet.add(idx);
-            }
+            route(idx,ChessPieceColor.WHITE);
         }
     }
 }

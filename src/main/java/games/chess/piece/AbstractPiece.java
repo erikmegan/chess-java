@@ -4,7 +4,6 @@ import games.chess.constant.ChessPieceColor;
 import games.chess.exception.InvalidMoveException;
 import games.chess.handler.Board;
 import java.util.*;
-import java.util.function.Function;
 
 
 public abstract class AbstractPiece implements Piece{
@@ -53,270 +52,150 @@ public abstract class AbstractPiece implements Piece{
 
     public void possibleMove(){}
 
-    void searchRightForward(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx + 10 - 1;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
 
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx - 10 + 1;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
+    private boolean route(Integer idx,ChessPieceColor colorOpponent){
+        if(idx < 10 || idx > 88) return false;
+        if(this.boardMap.get(idx) == null){
+            possibleMoveSet.add(idx);
+            return  true;
+        }else if (boardMap.get(idx).getColor().equals(colorOpponent)){
+            possibleMoveSet.add(idx);
+            return false;
+        }else{
+            return false;
         }
     }
+    void searchRightForward(){
+        boolean cont = true;
+        Integer idx = this.current;
+        switch (this.color) {
+            case ChessPieceColor.WHITE :
+                while (cont){
+                    idx = idx + 10 - 1;
+                    cont = route(idx,ChessPieceColor.BLACK);
+                }
+            case ChessPieceColor.BLACK:
+                while (cont){
+                    idx = idx - 10 + 1;
+                    cont = route(idx,ChessPieceColor.WHITE);
+                }
+        }
+    }
+
     void searchLeftForward(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx + 10 + 1;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
+        boolean cont = true;
+        Integer idx = this.current;
+        switch (this.color){
+            case ChessPieceColor.WHITE:
+                while (cont){
+                    idx = idx + 10 + 1;
+                    cont = route(idx,ChessPieceColor.BLACK);
                 }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx - 10 - 1;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
+            case ChessPieceColor.BLACK:
+                while (cont){
+                    idx = idx - 10 - 1;
+                    cont = route(idx,ChessPieceColor.WHITE);
                 }
-                if(idx < 10 || idx > 88) cont = false;
-            }
         }
     }
+
     void searchRightBackward(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx - 10 - 1;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
+        boolean cont = true;
+        Integer idx = this.current;
+        switch (this.color){
+            case ChessPieceColor.WHITE:
+                while (cont){
+                    idx = idx - 10 - 1;
+                    cont = route(idx,ChessPieceColor.BLACK);
                 }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx + 10 + 1;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
+            case ChessPieceColor.BLACK:
+                while (cont){
+                    idx = idx + 10 + 1;
+                    cont = route(idx,ChessPieceColor.BLACK);
                 }
-                if(idx < 10 || idx > 88) cont = false;
-            }
         }
     }
+
     void searchLeftBackward(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx - 10 + 1;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
+        boolean cont = true;
+        Integer idx = this.current;
+        switch (this.color){
+            case ChessPieceColor.WHITE:
+                while (cont){
+                    idx = idx - 10 + 1;
+                    cont = route(idx,ChessPieceColor.BLACK);
                 }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx = idx + 10 - 1;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
+            case ChessPieceColor.BLACK:
+                while (cont){
+                    idx = idx + 10 - 1;
+                    cont = route(idx,ChessPieceColor.WHITE);
                 }
-                if(idx < 10 || idx > 88) cont = false;
-            }
         }
     }
 
      void searchStraightForward(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx += 10;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx -= 10;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }
+         boolean cont = true;
+         Integer idx = this.current;
+         switch (this.color){
+             case ChessPieceColor.WHITE:
+                 while (cont){
+                     idx += 10;
+                     cont = route(idx,ChessPieceColor.BLACK);
+                 }
+             case ChessPieceColor.BLACK:
+                 while (cont){
+                     idx -= 10;
+                     cont = route(idx,ChessPieceColor.WHITE);
+                 }
+         }
     }
-     void  searchStraightBackward(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx -= 10;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx += 10;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }
+     void searchStraightBackward(){
+         boolean cont = true;
+         Integer idx = this.current;
+         switch (this.color){
+             case ChessPieceColor.WHITE:
+                 while (cont){
+                     idx -= 10;
+                     cont = route(idx,ChessPieceColor.BLACK);
+                 }
+             case ChessPieceColor.BLACK:
+                 while (cont){
+                     idx += 10;
+                     cont = route(idx,ChessPieceColor.WHITE);
+                 }
+         }
+
     }
-     void  searchLeft(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx += 1;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx -= 1;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }
+     void searchLeft(){
+         boolean cont = true;
+         Integer idx = this.current;
+         switch (this.color){
+             case ChessPieceColor.WHITE:
+                 while (cont){
+                     idx += 1;
+                     cont = route(idx,ChessPieceColor.BLACK);
+                 }
+             case ChessPieceColor.BLACK:
+                 while (cont){
+                     idx -= 1;
+                     cont = route(idx,ChessPieceColor.WHITE);
+                 }
+         }
     }
      void searchRight(){
-        if(this.color.equals(ChessPieceColor.WHITE)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx -= 1;
-                if(this.boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if (boardMap.get(idx).getColor().equals(ChessPieceColor.BLACK)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }else if(this.color.equals(ChessPieceColor.BLACK)){
-            boolean cont = true;
-            Integer idx = this.current;
-            while (cont){
-                idx += 1;
-                if (boardMap.get(idx) == null){
-                    possibleMoveSet.add(idx);
-                }else if(boardMap.get(idx).getColor().equals(ChessPieceColor.WHITE)){
-                    possibleMoveSet.add(idx);
-                    cont = false;
-                }else{
-                    cont = false;
-                }
-                if(idx < 10 || idx > 88) cont = false;
-            }
-        }
+         boolean cont = true;
+         Integer idx = this.current;
+         switch (this.color){
+             case ChessPieceColor.WHITE:
+                 while (cont){
+                     idx -= 1;
+                     cont = route(idx,ChessPieceColor.BLACK);
+                 }
+             case ChessPieceColor.BLACK:
+                 while (cont){
+                     idx += 1;
+                     cont = route(idx,ChessPieceColor.WHITE);
+                 }
+         }
     }
 }
