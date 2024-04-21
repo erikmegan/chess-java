@@ -4,14 +4,11 @@ import games.chess.constant.ChessPieceColor;
 import games.chess.exception.InvalidMoveException;
 import games.chess.exception.InvalidTurnException;
 import games.chess.piece.AbstractPiece;
-import games.chess.piece.Piece;
 
 
 public class CommandHandler {
 
     private final Board chessBoard;
-
-    private Piece piece;
 
     public CommandHandler(Board chessBoard) {
         this.chessBoard = chessBoard;
@@ -28,7 +25,6 @@ public class CommandHandler {
                 throw new InvalidTurnException(chessBoard.getTurnColor().toString());
             }
         }
-//        return true;
     }
     public void move(String chessPiece, Integer to)throws InvalidMoveException {
         AbstractPiece abstractPiece = chessBoard.getPieceMap().get(chessPiece.toUpperCase());
