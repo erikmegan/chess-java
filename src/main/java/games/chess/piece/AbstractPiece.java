@@ -34,13 +34,11 @@ public abstract class AbstractPiece implements Piece{
             if(boardMap.get(to) != null){
                 AbstractPiece exist = boardMap.get(to);
                 chessBoard.getPieceMap().remove(exist.getNameUnit());
-                if(exist.getColor().equals(ChessPieceColor.BLACK)){
-                    chessBoard.getBlackPieces().remove(exist.nameUnit);
-                }else if(exist.getColor().equals(ChessPieceColor.WHITE)){
-                    chessBoard.getWhitePieces().remove(exist.nameUnit);
+                switch (exist.getColor()){
+                    case ChessPieceColor.BLACK -> chessBoard.getBlackPieces().remove(exist.nameUnit);
+                    case ChessPieceColor.WHITE -> chessBoard.getWhitePieces().remove(exist.nameUnit);
                 }
             }
-
             boardMap.remove(this.current);
             boardMap.put(to, chessBoard.getAbstractPiece(this.name, this.nameUnit, to, this.color));
             this.current = to;
@@ -74,11 +72,13 @@ public abstract class AbstractPiece implements Piece{
                     idx = idx + 10 - 1;
                     cont = route(idx,ChessPieceColor.BLACK);
                 }
+                break;
             case ChessPieceColor.BLACK:
                 while (cont){
                     idx = idx - 10 + 1;
                     cont = route(idx,ChessPieceColor.WHITE);
                 }
+                break;
         }
     }
 
@@ -91,11 +91,13 @@ public abstract class AbstractPiece implements Piece{
                     idx = idx + 10 + 1;
                     cont = route(idx,ChessPieceColor.BLACK);
                 }
+                break;
             case ChessPieceColor.BLACK:
                 while (cont){
                     idx = idx - 10 - 1;
                     cont = route(idx,ChessPieceColor.WHITE);
                 }
+                break;
         }
     }
 
@@ -108,11 +110,13 @@ public abstract class AbstractPiece implements Piece{
                     idx = idx - 10 - 1;
                     cont = route(idx,ChessPieceColor.BLACK);
                 }
+                break;
             case ChessPieceColor.BLACK:
                 while (cont){
                     idx = idx + 10 + 1;
                     cont = route(idx,ChessPieceColor.BLACK);
                 }
+                break;
         }
     }
 
@@ -125,11 +129,13 @@ public abstract class AbstractPiece implements Piece{
                     idx = idx - 10 + 1;
                     cont = route(idx,ChessPieceColor.BLACK);
                 }
+                break;
             case ChessPieceColor.BLACK:
                 while (cont){
                     idx = idx + 10 - 1;
                     cont = route(idx,ChessPieceColor.WHITE);
                 }
+                break;
         }
     }
 
@@ -142,11 +148,13 @@ public abstract class AbstractPiece implements Piece{
                      idx += 10;
                      cont = route(idx,ChessPieceColor.BLACK);
                  }
+                 break;
              case ChessPieceColor.BLACK:
                  while (cont){
                      idx -= 10;
                      cont = route(idx,ChessPieceColor.WHITE);
                  }
+                 break;
          }
     }
      void searchStraightBackward(){
@@ -158,11 +166,13 @@ public abstract class AbstractPiece implements Piece{
                      idx -= 10;
                      cont = route(idx,ChessPieceColor.BLACK);
                  }
+                 break;
              case ChessPieceColor.BLACK:
                  while (cont){
                      idx += 10;
                      cont = route(idx,ChessPieceColor.WHITE);
                  }
+                 break;
          }
 
     }
@@ -175,11 +185,13 @@ public abstract class AbstractPiece implements Piece{
                      idx += 1;
                      cont = route(idx,ChessPieceColor.BLACK);
                  }
+                 break;
              case ChessPieceColor.BLACK:
                  while (cont){
                      idx -= 1;
                      cont = route(idx,ChessPieceColor.WHITE);
                  }
+                 break;
          }
     }
      void searchRight(){
@@ -191,11 +203,13 @@ public abstract class AbstractPiece implements Piece{
                      idx -= 1;
                      cont = route(idx,ChessPieceColor.BLACK);
                  }
+                 break;
              case ChessPieceColor.BLACK:
                  while (cont){
                      idx += 1;
                      cont = route(idx,ChessPieceColor.WHITE);
                  }
+                 break;
          }
     }
 }

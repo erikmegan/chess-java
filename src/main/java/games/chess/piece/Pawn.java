@@ -28,7 +28,7 @@ public class Pawn extends AbstractPiece{
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer to = this.current - 10;
             if(boardMap.get(to) == null){
-                possibleMoveSet.add(this.current - 10);
+                possibleMoveSet.add(to);
             }
         }
     }
@@ -40,14 +40,14 @@ public class Pawn extends AbstractPiece{
             if(boardMap.get(to) != null
                 && boardMap.get(to).getColor().equals(ChessPieceColor.BLACK)
             ){
-                possibleMoveSet.add(this.current + 10 + 1);
+                possibleMoveSet.add(to);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer to = this.current - 10 -1;
             if(boardMap.get(to) != null
                     && boardMap.get(to).getColor().equals(ChessPieceColor.WHITE)
             ){
-                possibleMoveSet.add(this.current - 10 - 1);
+                possibleMoveSet.add(to);
             }
         }
     }
@@ -59,14 +59,14 @@ public class Pawn extends AbstractPiece{
             if(boardMap.get(to) != null
                     && boardMap.get(to).getColor().equals(ChessPieceColor.BLACK)
             ){
-                possibleMoveSet.add(this.current + 10 + 1);
+                possibleMoveSet.add(to);
             }
         }else if(this.color.equals(ChessPieceColor.BLACK)){
             Integer to = this.current - 10 + 1;
             if(boardMap.get(to) != null
                     && boardMap.get(to).getColor().equals(ChessPieceColor.WHITE)
             ){
-                possibleMoveSet.add(this.current - 10 - 1);
+                possibleMoveSet.add(to);
             }
         }
     }

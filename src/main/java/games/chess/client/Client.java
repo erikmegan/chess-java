@@ -89,7 +89,6 @@ public class Client {
                 if(gameDone){
                     cont=false;
                 }
-
             }
             catch (GameDoneException | InvalidMoveException e){
                 System.out.println("Error : " +  e.getMessage());
