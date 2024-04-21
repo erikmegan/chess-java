@@ -64,12 +64,15 @@ public class Client {
         try {
             commandHandler.validateTurnColor(piece);
             if(!StringUtils.isInteger(params[0])){
-                // todo create command to give info available move
-                throw new NumberFormatException("coordinate must be integer");
+                if (params[0].equals("info")) {
+                    // todo create command to give info available move
+                    commandHandler.infoPossibleMove(piece);
+                }else{
+                    throw new NumberFormatException("coordinate must be integer");
+                }
             }else{
                 this.to = Integer.parseInt(params[0]);
                 commandHandler.move(piece,to);
-                commandHandler.alternateTurn();
             }
         }catch (InvalidMoveException | InvalidTurnException | NumberFormatException e){
             System.out.println("Error : " + e.getMessage());
@@ -85,7 +88,6 @@ public class Client {
                 handleInputChessPiece();
                 handleInputCoor();
                 commandHandler.move(chessPiece,to);
-                commandHandler.alternateTurn();
                 if(gameDone){
                     cont=false;
                 }

@@ -23,10 +23,12 @@ public class Knight extends AbstractPiece{
     }
 
     private void route(Integer idx, ChessPieceColor colorOpponent){
-        if(boardMap.get(idx) == null
-                || boardMap.get(idx).getColor().equals(colorOpponent)
-        ){
-            possibleMoveSet.add(idx);
+        if(idx > 10 && idx < 88){
+            if(boardMap.get(idx) == null
+                    || boardMap.get(idx).getColor().equals(colorOpponent)
+            ){
+                possibleMoveSet.add(idx);
+            }
         }
     }
 

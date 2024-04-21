@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface Piece {
 
-    boolean move(Board chessBoard, Integer to)throws InvalidMoveException;
+    void move(Board chessBoard, Integer to)throws InvalidMoveException;
 
     void possibleMove();
 

@@ -25,9 +25,15 @@ public abstract class AbstractPiece implements Piece{
     ChessPieceColor color;
     public ChessPieceColor getColor() {return color;}
 
+    public void infoPossibleMove(Board chessBoard){
+        this.boardMap = chessBoard.getBoardMap();
+        possibleMove();
+        System.out.println("possible move for " + this.nameUnit + " : ");
+        System.out.println(possibleMoveSet);
+    }
 
 
-    public boolean move(Board chessBoard, Integer to)throws InvalidMoveException {
+    public void move(Board chessBoard, Integer to)throws InvalidMoveException {
         this.boardMap = chessBoard.getBoardMap();
         possibleMove();
         if(possibleMoveSet.contains(to)){
@@ -45,7 +51,6 @@ public abstract class AbstractPiece implements Piece{
         }else{
             throw new InvalidMoveException("invalid move");
         }
-        return true;
     }
 
     public void possibleMove(){}

@@ -31,19 +31,25 @@ public class CommandHandler {
 //        return true;
     }
     public void move(String chessPiece, Integer to)throws InvalidMoveException {
-        // to do
-
         AbstractPiece abstractPiece = chessBoard.getPieceMap().get(chessPiece.toUpperCase());
         abstractPiece.move(chessBoard,to);
-
+        alternateTurn();
     }
 
-    public void alternateTurn(){
-        if(chessBoard.getTurnColor().equals(ChessPieceColor.WHITE)) {
-            chessBoard.setTurnColor(ChessPieceColor.BLACK);
-        }else if(chessBoard.getTurnColor().equals(ChessPieceColor.BLACK)){
-            chessBoard.setTurnColor(ChessPieceColor.WHITE);
+    private void alternateTurn(){
+        switch (chessBoard.getTurnColor()){
+            case ChessPieceColor.WHITE:
+                chessBoard.setTurnColor(ChessPieceColor.BLACK);
+                break;
+            case ChessPieceColor.BLACK:
+                chessBoard.setTurnColor(ChessPieceColor.WHITE);
+                break;
         }
         chessBoard.printBoard();
+    }
+
+    public void infoPossibleMove(String chessPiece){
+        AbstractPiece abstractPiece = chessBoard.getPieceMap().get(chessPiece.toUpperCase());
+        abstractPiece.infoPossibleMove(chessBoard);
     }
 }
